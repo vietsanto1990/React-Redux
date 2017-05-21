@@ -1,8 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-// import App from './App'
-import FilterableProductTable from './pages'
-// import './index.css'
+// import FilterableProductTable from 'pages'
 
 var PRODUCTS = [
   {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
