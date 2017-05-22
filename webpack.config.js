@@ -10,12 +10,12 @@ module.exports = {
     rules: [
       { 
         test: /\.js$/, 
-        exclude: /node_modules/,
+        exclude: "/node_modules/",
         loader: "babel-loader"
       },
       {
         test: /\.ico$/,
-        exclude: /node_modules/,
+        exclude: "/node_modules/",
         loader: "file-loader?name=[name].[ext]"
       }
     ]
