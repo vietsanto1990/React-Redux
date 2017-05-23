@@ -20,7 +20,7 @@ module.exports = {
       }
     ]
   },
-  devtool: "cheap-eval-source-map",
+  devtool: "inline-source-map",
   devServer: {
     contentBase: path.join(__dirname,"public"),
     host: "localhost",
