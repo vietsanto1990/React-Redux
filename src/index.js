@@ -1,17 +1,22 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import FilterableProductTable from './pages'
+import { render } from 'react-dom'
+import { App, locationApp } from './pages'
+import { createStore, applyMiddleware, compose } from 'redux'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk';
 
-var PRODUCTS = [
-  {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
-  {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
-  {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball'},
-  {category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch'},
-  {category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5'},
-  {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'}
-];
- 
-ReactDOM.render(
-  <FilterableProductTable products={PRODUCTS} />,
+const initStore = (reducers, state) => {
+    return createStore(reducers, state, compose(
+      applyMiddleware(thunk),
+      window.devToolsExtension ? window.devToolsExtension() : f => f
+ 	))
+}
+
+const store = initStore(locationApp, window.__INITIAL_STATE__)
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );

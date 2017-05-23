@@ -1,1 +1,2 @@
-export * from "./BookFilter"
+export * from "./bookfilter"
+export * from "./location"
