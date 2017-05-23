@@ -9,8 +9,8 @@ const locations = (state = [], action) => {
       	description: action.description
       }]
     case EDIT_LOCATION: 
-      return state.map((location, id) => {
-      	if(id === action.id) {
+      return state.map((location) => {
+      	if(location.id === action.id) {
       	  return Object.assign({}, location, {
       	  	id: action.id,
       	  	name: action.name,
@@ -20,8 +20,8 @@ const locations = (state = [], action) => {
       	return location
       })
     case DELETE_LOCATION:
-      return state.filter((location, id) => {
-      	return id !== action.id
+      return state.filter((location) => {
+      	return location.id !== action.id
       })
     default:
       return state

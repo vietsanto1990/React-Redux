@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import localtions from './locations'
+import locations from './locations'
 
 export const locationApp = combineReducers({
-  localtions
+  locations
   //TODO: add more reducers here
 })
 
