@@ -2,8 +2,9 @@
   "name": "my-react",
   "version": "0.1.0",
   "private": true,
+  "main": "src/index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --display-error-details",
     "serve": "webpack-dev-server --open",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",

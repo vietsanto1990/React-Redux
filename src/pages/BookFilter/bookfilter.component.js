@@ -1,12 +1,12 @@
 import React from 'react';
 
-class ProductCategoryRow extends React.Component {
+export class ProductCategoryRow extends React.Component {
   render() {
     return <tr><th colSpan="2">{this.props.category}</th></tr>;
   }
 }
 
-class ProductRow extends React.Component {
+export class ProductRow extends React.Component {
   render() {
     var name = this.props.product.stocked ?
       this.props.product.name :
@@ -22,7 +22,7 @@ class ProductRow extends React.Component {
   }
 }
 
-class ProductTable extends React.Component {
+export class ProductTable extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -55,7 +55,7 @@ class ProductTable extends React.Component {
   }
 }
 
-class SearchBar extends React.Component {
+export class SearchBar extends React.Component {
   constructor(props) {
     super(props)
     this.handleStockChange = this.handleStockChange.bind(this);
@@ -84,7 +84,7 @@ class SearchBar extends React.Component {
   }
 }
 
-class FilterableProductTable extends React.Component {
+export class FilterableProductTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -123,6 +123,4 @@ class FilterableProductTable extends React.Component {
     );
   }
 }
-
-export default FilterableProductTable;
 
