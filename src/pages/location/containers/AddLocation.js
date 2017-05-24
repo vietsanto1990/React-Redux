@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { addLocation } from '../actions'
+import { bindActionCreators } from 'redux'
 
-let AddLocation = ({ dispatch }) => {
+let AddLocation = ({ addLocation }) => {
   let name, description;
   return (
   	<div>
@@ -11,25 +12,30 @@ let AddLocation = ({ dispatch }) => {
   	  	if (!name.value.trim() && !description.value.trim()) {
           return
         }
-        dispatch(addLocation(name.value, description.value))
+        addLocation(name.value, description.value)
         name.value = ''
         description.value= ''
   	  }} >
 
   	    <input ref={node => {
           name = node
-        }} />
+        }} placeholder="Location name" />
 
         <input ref={node => {
           description = node
-        }} />
+        }} placeholder="Location description" />
 
-	    <input type="submit" value="Submit" />
+	    <input type="submit" value="Add" />
   	  </form>
   	</div>
   )
 }
 
-AddLocation = connect()(AddLocation)
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return  bindActionCreators({addLocation}, dispatch)
+}
+
+
+AddLocation = connect(null, mapDispatchToProps)(AddLocation)
 
 export default AddLocation
