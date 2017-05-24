@@ -2,32 +2,45 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addLocation } from '../actions'
 
-let AddLocation = ({ dispatch }) => {
-  let name, description;
-  return (
-  	<div>
-  	  <form onSubmit={e => {
-  	  	e.preventDefault()
-  	  	if (!name.value.trim() && !description.value.trim()) {
-          return
-        }
-        dispatch(addLocation(name.value, description.value))
-        name.value = ''
-        description.value= ''
-  	  }} >
+class AddLocation extends React.Component {
+  constructor(props) {
+    super(props)
+    this.name = ''
+    this.description = ''
+  }
 
-  	    <input ref={node => {
-          name = node
-        }} />
+  onAddLocation() {
+    alert('onAddLocation')
+  }
 
-        <input ref={node => {
-          description = node
-        }} />
+  onEditLocation() {
+    alert('onEditLocation')
+  }
 
-	    <input type="submit" value="Submit" />
-  	  </form>
-  	</div>
-  )
+  onDeleteLocation() {
+    alert('onDeleteLocation')
+    dispatch(addLocation(this.name.value, this.description.value))
+  }
+
+  render() {
+    return (
+    	<div>
+    	  <form>
+    	    <input ref={node => {
+            this.name = node
+          }} />
+
+          <input ref={node => {
+            this.description = node
+          }} />
+
+  	    <button type="button" value="Add" onClick={this.onAddLocation.bind(this)}>Add</button>
+        <button type="button" value="Edit" onClick={this.onEditLocation.bind(this)}>Edit</button>
+        <button type="button" value="Delete" onClick={this.onDeleteLocation.bind(this)}>Delete</button>
+    	  </form>
+    	</div>
+    )
+  }
 }
 
 AddLocation = connect()(AddLocation)
