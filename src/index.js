@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { App, locationApp } from './pages'
+import { locationApp } from './pages'
+import Nav from './pages/nav'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk';
@@ -16,7 +17,7 @@ const store = initStore(locationApp, window.__INITIAL_STATE__)
 
 render(
   <Provider store={store}>
-    <App />
+    <Nav />
   </Provider>,
   document.getElementById('root')
 );

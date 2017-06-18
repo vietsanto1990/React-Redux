@@ -29,9 +29,10 @@ class Location extends React.Component {
   	return (
 	 <li>
 	  	<input type="text" defaultValue={this.props.name} onChange={ this.onUpdateNameLocation }/>
+	  	-
 	  	<input type="text" defaultValue={this.props.description} onChange={ this.onUpdateDescriptionLocation }/>
 	    <div>
-	  	  <input type="button" value="Del" onClick={this.props.deleteLocation}/>
+	  	  <input type="button" value="Delete" onClick={this.props.deleteLocation}/>
 	  	  <input type="button" value="Save" onClick={this.onUpdateDescription}/>
 	  	</div>
 	  </li>

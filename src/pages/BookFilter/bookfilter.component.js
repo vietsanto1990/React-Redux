@@ -23,10 +23,6 @@ export class ProductRow extends React.Component {
 }
 
 export class ProductTable extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-  
   render() {
     var rows = [];
     var lastCategory = null;
