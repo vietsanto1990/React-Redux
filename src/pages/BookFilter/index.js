@@ -1,1 +1,1 @@
-export * from "./bookfilter.component"
+export * from "./FilterableProductTable"

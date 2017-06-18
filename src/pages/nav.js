@@ -5,7 +5,7 @@ import {
   Link
 } from 'react-router-dom'
 
-import { FilterableProductTable } from './BookFilter'
+import { FilterableProductTable } from './bookfilter'
 import { App } from './location'
 import books from '../../public/data/books.json'
 
