@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchtoProps = (dispatch) => {
-   return  bindActionCreators({setCurrLocation, deleteLocation, editLocation}, dispatch)
+   return bindActionCreators({setCurrLocation, deleteLocation, editLocation}, dispatch)
 }
 
 const VisibleLocationList = connect(mapStateToProps, mapDispatchtoProps)(LocationList)

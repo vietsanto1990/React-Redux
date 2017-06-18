@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { locationApp } from './pages'
-import Nav from './pages/nav'
+import { reducers } from './pages'
+import Navigation from './pages/Navigation'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk';
@@ -13,11 +13,11 @@ const initStore = (reducers, state) => {
  	))
 }
 
-const store = initStore(locationApp, window.__INITIAL_STATE__)
+const store = initStore(reducers, window.__INITIAL_STATE__)
 
 render(
   <Provider store={store}>
-    <Nav />
+    <Navigation />
   </Provider>,
   document.getElementById('root')
 );

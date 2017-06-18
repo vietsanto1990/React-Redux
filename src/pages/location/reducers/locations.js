@@ -24,7 +24,7 @@ const location = (state = {}, action) => {
   }   
 }
 
-const locations = (state = [], action) => {
+export const locations = (state = [], action) => {
   switch(action.type) {
     case ADD_LOCATION:
       return [
@@ -41,5 +41,3 @@ const locations = (state = [], action) => {
       return state
   }
 }
-
-export default locations

@@ -1,6 +1,6 @@
 import { CURR_LOCATION } from '../actions'
 
-const currentLocation = (state = -1, action) => {
+export const currentLocation = (state = -1, action) => {
   switch(action.type) {
   	case CURR_LOCATION:
   	  return action.id
@@ -8,5 +8,3 @@ const currentLocation = (state = -1, action) => {
   	  return state
   }
 }
-
-export default currentLocation

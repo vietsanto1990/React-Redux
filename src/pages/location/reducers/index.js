@@ -1,2 +1,2 @@
 export * from './locations'
-export * from './locationApp'
+export * from './currentLocation'

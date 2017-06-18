@@ -32,7 +32,7 @@ let AddLocation = ({ addLocation }) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return  bindActionCreators({addLocation}, dispatch)
+  return bindActionCreators({addLocation}, dispatch)
 }
 
 
