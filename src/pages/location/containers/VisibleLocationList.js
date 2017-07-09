@@ -14,10 +14,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchtoProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
    return bindActionCreators({setCurrLocation, deleteLocation, editLocation}, dispatch)
 }
 
-const VisibleLocationList = connect(mapStateToProps, mapDispatchtoProps)(LocationList)
+const VisibleLocationList = connect(mapStateToProps, mapDispatchToProps)(LocationList)
 
 export default VisibleLocationList

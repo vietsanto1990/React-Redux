@@ -1,0 +1,21 @@
+.DraggableApp {
+
+}
+
+.DraggableApp_item {
+  display: inline-block;
+  border: 1px dashed black;
+  margin: 10px;
+}
+
+.DraggableApp_item--left {
+  width: 20%;
+  height: 100px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.DraggableApp_item--right {
+  width: 30%;
+  vertical-align: middle;
+}

@@ -8,15 +8,11 @@ const location = (state = {}, action) => {
         name: action.name,
         description: action.description
       }
-    case EDIT_LOCATION: 
+      case EDIT_LOCATION:
         if(state.id !== action.id) {
           return state
         }
-        return Object.assign({}, state, {
-          id: action.id,
-          name: action.name,
-          description: action.description
-        })
+        return { ...state, ...action }
     case DELETE_LOCATION:
       return state.id !== action.id ? true : false
     default:
