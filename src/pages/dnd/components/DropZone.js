@@ -1,18 +1,18 @@
 import React from 'react'
 import { DropTarget } from 'react-dnd';
 import {ItemTypes} from './ItemTypes'
+import './DropZone.css'
 
 const spec = {
   drop(props, monitor, component) {
-    console.log(`DROP `);
-  },
-
-  hover(props, monitor, component) {
-    console.log(`DROP hover `);
+    console.log(`DROP item`);
+    const item = monitor.getItem();
+    return item
   },
 
   canDrop(props, monitor) {
-    console.log(`DROP canDrop `);
+    //TODO: ignore this if nothing implementation
+    return true;
   }
 }
 
@@ -26,7 +26,7 @@ class DropZone extends React.Component {
   render() {
     const {dropTargetConnector} = this.props;
     return dropTargetConnector(
-      <div>
+      <div className="DropZone">
         Drop item here
       </div>
     )

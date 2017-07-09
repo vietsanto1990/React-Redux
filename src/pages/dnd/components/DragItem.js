@@ -1,10 +1,43 @@
 import React from 'react'
 import './DragItem.css'
+import { DragSource } from 'react-dnd'
+import {ItemTypes} from './ItemTypes'
 
-export default class DragItem extends React.Component {
+const spec = {
+  beginDrag(props, monitor, component) {
+    console.log(`DRAG beginDrag ${props.id}`);
+    const item = {
+      id: props.id
+    }
+    return item;
+  },
+
+  canDrag(props, monitor) {
+    //TODO: ignore this if nothing implementation
+    console.log(`DRAG canDrag ${monitor.getItemType()}`);
+    return true;
+  },
+
+  endDrag(props, monitor, component) {
+    console.log(`DRAG endDrag drop handler ${monitor.didDrop()}`);
+    const result = monitor.getDropResult();
+    console.log(`DRAG endDrag drop result ${monitor.getDropResult()}`);
+  }
+}
+
+const collect = (connect, monitor) => {
+  return {
+    connectDragSource: connect.dragSource()
+  }
+}
+
+class DragItem extends React.Component {
   render() {
-    return (
-      <div className="DragItem">Draggable item {this.props.index}</div>
+    const { connectDragSource } = this.props;
+    return connectDragSource(
+      <div className="DragItem">Draggable item {this.props.id}</div>
     )
   }
 }
+
+export default DragSource(ItemTypes.ITEM, spec, collect)(DragItem);
