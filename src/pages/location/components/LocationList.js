@@ -1,15 +1,49 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Location from './Location'
+import './LocationList.css'
 
-const LocationList = ({ locations, setCurrLocation, deleteLocation, editLocation }) => (
-  <ul>
-  	{locations && locations.map(location => 
-  	  <Location key={location.id} name={location.name} description={location.description} 
-  	  setCurrLocation={() => setCurrLocation(location.id)} 
-  	  deleteLocation={() => deleteLocation(location.id)}
-  	  editLocation={(name, description) => editLocation(location.id, name, description)}/>
-  	)}
-  </ul>
-)
+class LocationList extends React.Component {
+
+  componentDidMount() {
+    const { fetchLocations } = this.props;
+    fetchLocations();
+  }
+
+  render() {
+    const { locations, setCurrLocation, deleteLocation, editLocation } = this.props;
+    return (
+      <form>
+        <table>
+          <thead>
+          <tr>
+            <td>NAME</td>
+            <td>DESCRIPTION</td>
+          </tr>
+          </thead>
+          <tbody className='locationTable'>
+          {locations.map(location => (
+            <Location key={location.id} data={location} onDelete={deleteLocation} />
+          ))}
+          </tbody>
+          <tfoot>
+          <tr>
+            <td><input type="submit" value='Save' /></td>
+            <td><input type="button" value='Cancel' /></td>
+          </tr>
+          </tfoot>
+        </table>
+      </form>
+    )
+  }
+}
+
+LocationList.propTypes = {
+  locations: PropTypes.array
+}
+
+LocationList.defaultProps = {
+  locations: []
+}
 
 export default LocationList

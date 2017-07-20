@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { setCurrLocation, deleteLocation, editLocation } from '../actions'
+import { setCurrLocation, deleteLocation, editLocation, fetchLocations } from '../actions'
 import LocationList from '../components/LocationList'
 import { bindActionCreators } from 'redux'
 
@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-   return bindActionCreators({setCurrLocation, deleteLocation, editLocation}, dispatch)
+   return bindActionCreators({setCurrLocation, deleteLocation, editLocation, fetchLocations}, dispatch)
 }
 
 const VisibleLocationList = connect(mapStateToProps, mapDispatchToProps)(LocationList)

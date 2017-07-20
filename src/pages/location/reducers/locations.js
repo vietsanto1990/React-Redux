@@ -1,26 +1,6 @@
-import { ADD_LOCATION, EDIT_LOCATION, DELETE_LOCATION } from '../actions'
+import { ADD_LOCATION, EDIT_LOCATION, DELETE_LOCATION, REQUEST_LOCATION, RECEIVE_LOCATION } from '../actions'
 
-const location = (state = {}, action) => {
-  switch(action.type) {
-    case ADD_LOCATION:
-      return {
-        id: action.id,
-        name: action.name,
-        description: action.description
-      }
-      case EDIT_LOCATION:
-        if(state.id !== action.id) {
-          return state
-        }
-        return { ...state, ...action }
-    case DELETE_LOCATION:
-      return state.id !== action.id ? true : false
-    default:
-      return state
-  }   
-}
-
-export const locations = (state = [], action) => {
+const location = (state = [], action) => {
   switch(action.type) {
     case ADD_LOCATION:
       return [
@@ -28,11 +8,43 @@ export const locations = (state = [], action) => {
         location(undefined, action)
       ]
     case EDIT_LOCATION:
-      return state.map((t) => {
-        return location(t, action)
-      })
+      return [...state, state.map((t) => {
+          if(t.id !== action.id) {
+            return t
+          }
+          return { ...t, ...action }
+        })
+      ]
     case DELETE_LOCATION:
-      return state.filter((t) => location(t, action))
+      return [...state, state.filter((t) =>(t.id !== action.id))]
+    default:
+      return state
+  }   
+}
+
+const fetchLocations = (state = {}, action) => {
+  switch (action.type) {
+    case REQUEST_LOCATION:
+      return Object.assign({}, state, {
+        isFetching: true,
+      })
+    case RECEIVE_LOCATION:
+      return Object.assign({}, state, {
+        isFetching: false,
+        locations: action.locations
+      })
+  }
+}
+
+export const locations = (state = {}, action) => {
+  switch(action.type) {
+    case ADD_LOCATION:
+    case EDIT_LOCATION:
+    case DELETE_LOCATION:
+      return Object.assign({}, state, {locations: location(state.locations, action)})
+    case REQUEST_LOCATION:
+    case RECEIVE_LOCATION:
+      return fetchLocations(state, action);
     default:
       return state
   }

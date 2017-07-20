@@ -1,5 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
+import 'babel-polyfill'
 import { reducers } from './pages'
 import Navigation from './pages/Navigation'
 import { createStore, applyMiddleware, compose } from 'redux'

@@ -12,12 +12,6 @@ const spec = {
     return item;
   },
 
-  canDrag(props, monitor) {
-    //TODO: ignore this if nothing implementation
-    console.log(`DRAG canDrag ${monitor.getItemType()}`);
-    return true;
-  },
-
   endDrag(props, monitor, component) {
     console.log(`DRAG endDrag drop handler ${monitor.didDrop()}`);
     const result = monitor.getDropResult();

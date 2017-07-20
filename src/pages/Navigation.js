@@ -23,7 +23,7 @@ const BookWrapper = () => {
 const Navigation = () => (
 	<Router>
 		<div>
-			<ul className="Navigation">
+			<ul className="navigation">
 				<li><Link to='/book'>Book Filter</Link></li>
 				<li><Link to='/location'>Location</Link></li>
 				<li><Link to='/counter'>Counter</Link></li>

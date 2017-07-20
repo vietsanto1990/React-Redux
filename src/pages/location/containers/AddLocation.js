@@ -31,7 +31,7 @@ let AddLocation = ({ addLocation }) => {
   )
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({addLocation}, dispatch)
 }
 
