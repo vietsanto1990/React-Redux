@@ -1,3 +1,3 @@
-export * from './App'
-export * from './Location'
-export * from './LocationList'
+export * from './App';
+export * from './Location';
+export * from './LocationList';

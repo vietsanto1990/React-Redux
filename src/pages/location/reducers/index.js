@@ -1,2 +1,2 @@
-export * from './locations'
-export * from './currentLocation'
+export * from './locations';
+export * from './currentLocation';

@@ -1,1 +1,1 @@
-export * from "./FilterableProductTable"
+export * from './FilterableProductTable';

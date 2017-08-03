@@ -1,3 +1,4 @@
+/* eslint react/prop-types: 0 */
 import React from 'react';
 
 export class ProductCategoryRow extends React.Component {
@@ -7,6 +8,7 @@ export class ProductCategoryRow extends React.Component {
 }
 
 export class ProductRow extends React.Component {
+
   render() {
     var name = this.props.product.stocked ?
       this.props.product.name :
@@ -29,7 +31,7 @@ export class ProductTable extends React.Component {
     this.props.products.forEach(product => {
       if(product.category.indexOf(this.props.filterText) === -1 || 
          (this.props.inStockOnly && !product.stocked)) {
-         return;
+        return;
       }
       if (product.category !== lastCategory) {
         rows.push(<ProductCategoryRow category={product.category} key={product.category} />);
@@ -53,7 +55,7 @@ export class ProductTable extends React.Component {
 
 export class SearchBar extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.handleStockChange = this.handleStockChange.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
   }
@@ -86,7 +88,7 @@ export class FilterableProductTable extends React.Component {
     this.state = {
       filterText : '',
       inStockOnly : false
-    }
+    };
     this.handleStockChange = this.handleStockChange.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
   }
@@ -94,13 +96,13 @@ export class FilterableProductTable extends React.Component {
   handleStockChange(stock) {
     this.setState({
       inStockOnly: stock
-    })
+    });
   }
   
   handleTextChange(text) {
     this.setState({
       filterText: text
-    })
+    });
   }
   
   render() {

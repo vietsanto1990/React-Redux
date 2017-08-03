@@ -1,26 +1,22 @@
-import React from 'react'
+/* eslint react/prop-types: 0 */
+import React from 'react';
 import { DropTarget } from 'react-dnd';
-import {ItemTypes} from './ItemTypes'
-import './DropZone.css'
+import {ItemTypes} from './ItemTypes';
+import './DropZone.css';
 
 const spec = {
-  drop(props, monitor, component) {
-    console.log(`DROP item`);
+  drop(props, monitor) {
+    // console.log('DROP item');
     const item = monitor.getItem();
-    return item
+    return item;
   },
+};
 
-  canDrop(props, monitor) {
-    //TODO: ignore this if nothing implementation
-    return true;
-  }
-}
-
-const collect = (connect, monitor) => {
+const collect = (connect) => {
   return {
     dropTargetConnector: connect.dropTarget()
-  }
-}
+  };
+};
 
 class DropZone extends React.Component {
   render() {
@@ -29,7 +25,7 @@ class DropZone extends React.Component {
       <div className="DropZone">
         Drop item here
       </div>
-    )
+    );
   }
 }
 

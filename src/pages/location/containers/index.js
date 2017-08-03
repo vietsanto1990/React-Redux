@@ -1,2 +1,2 @@
-export * from './VisibleLocationList'
-export * from './AddLocation'
+export * from './VisibleLocationList';
+export * from './AddLocation';
