@@ -11,7 +11,7 @@ class LocationList extends React.Component {
   }
 
   render() {
-    const { locations, setCurrLocation, deleteLocation, editLocation } = this.props;
+    const { locations, deleteLocation } = this.props;
     return (
       <form>
         <table>

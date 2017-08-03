@@ -13,7 +13,7 @@ class Location extends React.Component {
   		<tr>
 				<td>{data.name}</td>
 				<td>{data.description}</td>
-				<td><input type="button" value='delete' onClick={this.handleDelete}/></td>
+				<td><div onClick={this.handleDelete}>X</div></td>
 			</tr>
     )
   }

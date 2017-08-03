@@ -1,25 +1,25 @@
 import { ADD_LOCATION, EDIT_LOCATION, DELETE_LOCATION, REQUEST_LOCATION, RECEIVE_LOCATION } from '../actions'
 
-const location = (state = [], action) => {
-  switch(action.type) {
+const handleLocations = (state = [], action) => {
+  switch (action.type) {
     case ADD_LOCATION:
-      return [
-        ...state,
-        location(undefined, action)
-      ]
+      return [...state, {
+        id: action.id,
+        name: action.name,
+        description: action.description
+      }];
     case EDIT_LOCATION:
-      return [...state, state.map((t) => {
-          if(t.id !== action.id) {
-            return t
-          }
-          return { ...t, ...action }
-        })
-      ]
+      return state.map(t => {
+        if(t.id !== action.id) {
+          return Object.assign({}, t, action);
+        }
+        return t;
+      })
     case DELETE_LOCATION:
-      return [...state, state.filter((t) =>(t.id !== action.id))]
+      return state.filter((t) =>(t.id !== action.id));
     default:
-      return state
-  }   
+      return state;
+  }
 }
 
 const fetchLocations = (state = {}, action) => {
@@ -33,6 +33,8 @@ const fetchLocations = (state = {}, action) => {
         isFetching: false,
         locations: action.locations
       })
+    default:
+      return state
   }
 }
 
@@ -41,7 +43,7 @@ export const locations = (state = {}, action) => {
     case ADD_LOCATION:
     case EDIT_LOCATION:
     case DELETE_LOCATION:
-      return Object.assign({}, state, {locations: location(state.locations, action)})
+      return {...state, ...{locations: handleLocations(state.locations, action)}};
     case REQUEST_LOCATION:
     case RECEIVE_LOCATION:
       return fetchLocations(state, action);

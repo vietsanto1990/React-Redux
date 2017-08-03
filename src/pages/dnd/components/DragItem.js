@@ -14,7 +14,6 @@ const spec = {
 
   endDrag(props, monitor, component) {
     console.log(`DRAG endDrag drop handler ${monitor.didDrop()}`);
-    const result = monitor.getDropResult();
     console.log(`DRAG endDrag drop result ${monitor.getDropResult()}`);
   }
 }

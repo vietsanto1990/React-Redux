@@ -1,4 +1,5 @@
-import fetch from 'isomorphic-fetch'
+import locations from '../../../../public/data/locations.json'
+
 
 let nextLocationId = 0
 
@@ -9,7 +10,6 @@ export const CURR_LOCATION= 'CURR_LOCATION'
 export const REQUEST_LOCATION= 'REQUEST_LOCATION'
 export const RECEIVE_LOCATION= 'RECEIVE_LOCATION'
 
-const locationContextPath = '../../../../public/data/locations.json';
 
 /* Action Creators */
 export const addLocation = (name, description) => {
@@ -53,23 +53,22 @@ export const requestLocations = () => {
 export const receiveLocations = (locations) => {
   return {
     type: RECEIVE_LOCATION,
-    locations
+    locations: locations
   }
 }
 
 export const fetchLocations = () => {
   return (dispatch) => {
     dispatch(requestLocations())
-    return fetch(locationContextPath)
-      .then(
-        response =>
-          response.json(),
-        error =>
-          console.log('An error occured.', error)
-      )
-      .then(
-        json =>
-          dispatch(receiveLocations(json))
-      )
+    return new Promise((resolve, reject) => {
+      resolve(locations);
+    })
+    .then(
+      response => response,
+      error => console.log('An error occured.', error)
+    )
+    .then(
+      json => dispatch(receiveLocations(json))
+    )
   }
 }

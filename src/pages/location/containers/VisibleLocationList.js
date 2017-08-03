@@ -3,9 +3,9 @@ import { setCurrLocation, deleteLocation, editLocation, fetchLocations } from '.
 import LocationList from '../components/LocationList'
 import { bindActionCreators } from 'redux'
 
-const getVisibleLocation = (locations = []) => {
+const getVisibleLocation = (locations = {}) => {
   //TODO: implement Reselect with createSelector function if state is computed more complicated
-  return [...locations];
+  return locations.locations;
 }
 
 const mapStateToProps = (state) => {
