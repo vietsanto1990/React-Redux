@@ -1,9 +1,9 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
-import {connect} from 'react-redux';
-import {increment, decrement} from '../actions';
+import { connect } from 'react-redux';
+import { increment, decrement } from '../actions';
 
-const Counter = ({value, onIncrement, onDecrement}) => (
+const Counter = ({ value, onIncrement, onDecrement }) => (
   <div>
     <h1>{value}</h1>
     <button onClick={onIncrement}>+</button>

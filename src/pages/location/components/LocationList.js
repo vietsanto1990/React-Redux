@@ -7,12 +7,12 @@ import './LocationList.css';
 class LocationList extends React.Component {
 
   componentDidMount() {
-    const {fetchLocations} = this.props;
+    const { fetchLocations } = this.props;
     fetchLocations();
   }
 
   render() {
-    const {locations, deleteLocation} = this.props;
+    const { locations, deleteLocation } = this.props;
     return (
       <form>
         <table>

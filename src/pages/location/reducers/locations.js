@@ -3,11 +3,11 @@ import { ADD_LOCATION, EDIT_LOCATION, DELETE_LOCATION, REQUEST_LOCATION, RECEIVE
 const handleLocations = (state = [], action) => {
   switch (action.type) {
   case ADD_LOCATION:
-    return [...state, {
+    return [ ...state, {
       id: action.id,
       name: action.name,
       description: action.description
-    }];
+    } ];
   case EDIT_LOCATION:
     return state.map(t => {
       if(t.id !== action.id) {
@@ -43,7 +43,7 @@ export const locations = (state = {}, action) => {
   case ADD_LOCATION:
   case EDIT_LOCATION:
   case DELETE_LOCATION:
-    return {...state, ...{locations: handleLocations(state.locations, action)}};
+    return { ...state, ...{ locations: handleLocations(state.locations, action) } };
   case REQUEST_LOCATION:
   case RECEIVE_LOCATION:
     return fetchLocations(state, action);

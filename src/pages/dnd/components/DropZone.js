@@ -1,7 +1,7 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
 import { DropTarget } from 'react-dnd';
-import {ItemTypes} from './ItemTypes';
+import { ItemTypes } from './ItemTypes';
 import './DropZone.css';
 
 const spec = {
@@ -20,7 +20,7 @@ const collect = (connect) => {
 
 class DropZone extends React.Component {
   render() {
-    const {dropTargetConnector} = this.props;
+    const { dropTargetConnector } = this.props;
     return dropTargetConnector(
       <div className="DropZone">
         Drop item here

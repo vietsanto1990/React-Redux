@@ -12,7 +12,7 @@ export class ProductRow extends React.Component {
   render() {
     var name = this.props.product.stocked ?
       this.props.product.name :
-      <span style={{color: 'red'}}>
+      <span style={{ color: 'red' }}>
         {this.props.product.name}
       </span>;
     return (

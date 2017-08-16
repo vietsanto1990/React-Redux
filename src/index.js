@@ -1,15 +1,18 @@
-import React from 'react';
-import {render} from 'react-dom';
 import 'babel-polyfill';
-import {reducers} from './pages';
+import React from 'react';
 import Navigation from './pages/Navigation';
-import {createStore, applyMiddleware, compose} from 'redux';
-import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
+import { render } from 'react-dom';
+import { reducers, epics } from './pages';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { Provider } from 'react-redux';
+import { createEpicMiddleware } from 'redux-observable';
+
+const epicMiddleware = createEpicMiddleware(epics);
 
 const initStore = (reducers, state) => {
   return createStore(reducers, state, compose(
-    applyMiddleware(thunk),
+    applyMiddleware([ epicMiddleware, thunk ]),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   ));
 };

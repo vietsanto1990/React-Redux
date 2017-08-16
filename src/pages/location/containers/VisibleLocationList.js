@@ -1,7 +1,7 @@
-import {connect} from 'react-redux';
-import {setCurrLocation, deleteLocation, editLocation, fetchLocations} from '../actions';
+import { connect } from 'react-redux';
+import { setCurrLocation, deleteLocation, editLocation, fetchLocations } from '../actions';
 import LocationList from '../components/LocationList';
-import {bindActionCreators} from 'redux';
+import { bindActionCreators } from 'redux';
 
 const getVisibleLocation = (locations = {}) => {
   //TODO: implement Reselect with createSelector function if state is computed more complicated
@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({setCurrLocation, deleteLocation, editLocation, fetchLocations}, dispatch);
+  return bindActionCreators({ setCurrLocation, deleteLocation, editLocation, fetchLocations }, dispatch);
 };
 
 const VisibleLocationList = connect(mapStateToProps, mapDispatchToProps)(LocationList);

@@ -1,10 +1,10 @@
 /* eslint react/prop-types: 0 */
 import React from 'react';
-import {connect} from 'react-redux';
-import {addLocation} from '../actions';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { addLocation } from '../actions';
+import { bindActionCreators } from 'redux';
 
-let AddLocation = ({addLocation}) => {
+let AddLocation = ({ addLocation }) => {
   let name, description;
   return (
     <div>
@@ -32,7 +32,7 @@ let AddLocation = ({addLocation}) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({addLocation}, dispatch);
+  return bindActionCreators({ addLocation }, dispatch);
 };
 
 

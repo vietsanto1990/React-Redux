@@ -2,7 +2,7 @@
 import React from 'react';
 import './DragItem.css';
 import { DragSource } from 'react-dnd';
-import {ItemTypes} from './ItemTypes';
+import { ItemTypes } from './ItemTypes';
 
 const spec = {
   beginDrag(props) {

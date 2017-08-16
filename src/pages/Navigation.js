@@ -5,9 +5,9 @@ import {
   Link
 } from 'react-router-dom';
 
-import {FilterableProductTable} from './bookfilter';
-import {App} from './location';
-import {Counter} from './counter';
+import { FilterableProductTable } from './bookfilter';
+import { App } from './location';
+import { Counter } from './counter';
 import DraggableApp from './dnd/index';
 import books from '../../public/data/books.json';
 import './Navigation.css';
