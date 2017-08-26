@@ -1,9 +1,12 @@
-import { REQUEST_LOCATION, fetchLocationsAsync, receiveLocations } from '../actions';
+import { REQUEST_LOCATION, requestLocations } from '../actions';
+import { fetchLocationsAsync } from '../services';
 
 export const fetchLocationEpic = (action$) => {
-  action$.typeOf(REQUEST_LOCATION)
-    .mergeMap(() => {
-      fetchLocationsAsync()
-        .map(response => (receiveLocations(response)));
+  return action$.ofType(REQUEST_LOCATION.START)
+    .switchMap(() => {
+      return fetchLocationsAsync()
+        .map((response) => {
+          return requestLocations.success(response);
+        });
     });
 };

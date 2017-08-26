@@ -11,6 +11,6 @@ export const reducers = combineReducers({
   //TODO: add more reducers here
 });
 
-export const epics = combineEpics({
+export const epics = combineEpics(
   fetchLocationEpic
-});
+);

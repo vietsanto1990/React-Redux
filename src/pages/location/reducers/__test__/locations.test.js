@@ -1,5 +1,5 @@
 import * as actions from '../../actions/index';
-import locations from '../locations';
+import locations from '../locationReducers';
 
 describe('locations', () => {
   it('it should return the initial locations as empty array', () => {

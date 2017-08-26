@@ -7,8 +7,8 @@ import './LocationList.css';
 class LocationList extends React.Component {
 
   componentDidMount() {
-    const { fetchLocations } = this.props;
-    fetchLocations();
+    const { requestLocations } = this.props;
+    requestLocations();
   }
 
   render() {

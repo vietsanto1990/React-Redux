@@ -1,4 +1,5 @@
 import 'babel-polyfill';
+import 'rxjs';
 import React from 'react';
 import Navigation from './pages/Navigation';
 import thunk from 'redux-thunk';
@@ -12,7 +13,7 @@ const epicMiddleware = createEpicMiddleware(epics);
 
 const initStore = (reducers, state) => {
   return createStore(reducers, state, compose(
-    applyMiddleware([ epicMiddleware, thunk ]),
+    applyMiddleware(epicMiddleware, thunk),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   ));
 };
