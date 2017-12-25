@@ -1,52 +1,27 @@
-import { ADD_LOCATION, EDIT_LOCATION, DELETE_LOCATION, REQUEST_LOCATION, RECEIVE_LOCATION } from '../actions';
+import { fromJS } from 'immutable';
+import { ADD_LOCATION, EDIT_LOCATION, DELETE_LOCATION, REQUEST_LOCATION } from '../actions';
 
-const handleLocations = (state = [], action) => {
-  switch (action.type) {
-  case ADD_LOCATION:
-    return [ ...state, {
-      id: action.id,
-      name: action.name,
-      description: action.description
-    } ];
-  case EDIT_LOCATION:
-    return state.map(t => {
-      if(t.id !== action.id) {
-        return Object.assign({}, t, action);
-      }
-      return t;
-    });
-  case DELETE_LOCATION:
-    return state.filter((t) =>(t.id !== action.id));
-  default:
-    return state;
-  }
+const initialState = {
+  locations: [],
+  isFetching: false,
 };
 
-const fetchLocations = (state = {}, action) => {
-  switch (action.type) {
-  case REQUEST_LOCATION:
-    return Object.assign({}, state, {
-      isFetching: true,
-    });
-  case RECEIVE_LOCATION:
-    return Object.assign({}, state, {
-      isFetching: false,
-      locations: action.locations
-    });
-  default:
-    return state;
-  }
-};
-
-export const locations = (state = {}, action) => {
+export const locations = (prevState, action) => {
+  const state = prevState || fromJS(initialState);
   switch(action.type) {
   case ADD_LOCATION:
+    return state.updateIn([ 'locations' ], locations => locations.push(action.response));
   case EDIT_LOCATION:
+    return state.mergeIn([ 'locations' ], action.response);
   case DELETE_LOCATION:
-    return { ...state, ...{ locations: handleLocations(state.locations, action) } };
-  case REQUEST_LOCATION:
-  case RECEIVE_LOCATION:
-    return fetchLocations(state, action);
+    return state.updateIn([ 'locations' ], locations => locations.filter((location) => {
+      return location.get('id') != action.response.id;
+    }));
+  case REQUEST_LOCATION.START:
+    return state.set('isFetching', true);
+  case REQUEST_LOCATION.SUCCESS:
+    return state.set('isFetching', false)
+      .set('locations', fromJS(action.response));
   default:
     return state;
   }

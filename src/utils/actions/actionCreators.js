@@ -1,17 +1,17 @@
-const createActionAsync = (type) => {
+const createActionAsync = (type, arg) => {
   return (data) => {
     return {
       type: type,
-      payload: data,
+      [arg]: data,
     };
   };
 };
 
 const createRequestActions = (actionTypes) => {
   return {
-    start: createActionAsync(actionTypes.START),
-    success: createActionAsync(actionTypes.SUCCESS),
-    error: createActionAsync(actionTypes.ERROR),
+    start: createActionAsync(actionTypes.START, 'payload'),
+    success: createActionAsync(actionTypes.SUCCESS, 'response'),
+    error: createActionAsync(actionTypes.ERROR, 'error'),
     cancelled: createActionAsync(actionTypes.CANCELLED),
   };
 };

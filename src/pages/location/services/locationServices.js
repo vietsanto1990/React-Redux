@@ -1,17 +1,8 @@
 import { Observable } from 'rxjs';
-import locations from '../../../../public/data/locations.json';
+import fileStream from 'utils/filestream';
 
 export const fetchLocationsAsync = () => {
-  return Observable.fromPromise(new Promise((resolve) => {
-    resolve(locations);
-  })
-    .then(
-      (response) => {
-        console.log(`fetchLocationsAsync ${response}`);
-        return response;
-      },
-      (error) => {
-        console.log('An error occured.', error);
-      }
-    ));
+  return Observable.fromPromise(
+   fileStream.readJsonFile('data/locations.json')
+  );
 };
