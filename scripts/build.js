@@ -7,7 +7,7 @@ process.env.NODE_ENV = 'production';
 // if this file is missing. dotenv will never modify any environment variables
 // that have already been set.
 // https://github.com/motdotla/dotenv
-require('dotenv').config({silent: true});
+require('dotenv').config({ silent: true });
 
 var chalk = require('chalk');
 var fs = require('fs-extra');
@@ -24,7 +24,7 @@ var printFileSizesAfterBuild = FileSizeReporter.printFileSizesAfterBuild;
 var useYarn = fs.existsSync(paths.yarnLockFile);
 
 // Warn and crash if required files are missing
-if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
+if (!checkRequiredFiles([ paths.appHtml, paths.appIndexJs ])) {
   process.exit(1);
 }
 
@@ -57,7 +57,7 @@ function build(previousFileSizes) {
   console.log('Creating an optimized production build...');
   webpack(config).run((err, stats) => {
     if (err) {
-      printErrors('Failed to compile.', [err]);
+      printErrors('Failed to compile.', [ err ]);
       process.exit(1);
     }
 
@@ -67,9 +67,9 @@ function build(previousFileSizes) {
     }
 
     if (process.env.CI && stats.compilation.warnings.length) {
-     printErrors('Failed to compile. When process.env.CI = true, warnings are treated as failures. Most CI servers set this automatically.', stats.compilation.warnings);
-     process.exit(1);
-   }
+      printErrors('Failed to compile. When process.env.CI = true, warnings are treated as failures. Most CI servers set this automatically.', stats.compilation.warnings);
+      process.exit(1);
+    }
 
     console.log(chalk.green('Compiled successfully.'));
     console.log();
@@ -130,7 +130,7 @@ function build(previousFileSizes) {
         // no homepage
         console.log('The project was built assuming it is hosted at the server root.');
         console.log('To override this, specify the ' + chalk.green('homepage') + ' in your '  + chalk.cyan('package.json') + '.');
-        console.log('For example, add this to build it for GitHub Pages:')
+        console.log('For example, add this to build it for GitHub Pages:');
         console.log();
         console.log('  ' + chalk.green('"homepage"') + chalk.cyan(': ') + chalk.green('"http://myname.github.io/myapp"') + chalk.cyan(','));
         console.log();
