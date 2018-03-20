@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "main": "src/index.js",
+  "homepage": "http://greenbud.s3-website-ap-southeast-1.amazonaws.com/",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
